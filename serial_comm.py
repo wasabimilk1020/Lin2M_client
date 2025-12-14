@@ -1,8 +1,15 @@
 import serial
 import time
 import random
+import json
 
-ser = serial.Serial('COM3', 9600)
+with open("client_config.json", "r", encoding="utf-8") as f:
+    cfg = json.load(f)
+
+ser = serial.Serial(
+    cfg["serial_port"],
+    cfg.get("serial_baudrate", 9600)  # 혹시 없으면 기본값
+)
 
 # 랜덤 클릭
 def randClick(xVal, yVal, xRange, yRange, clkSleep):
