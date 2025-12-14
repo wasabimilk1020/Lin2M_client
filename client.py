@@ -249,7 +249,14 @@ def send_ping():
         sio.emit("ping", {"time": current_time})
         time.sleep(2)
 
-sio.connect('http://59.31.41.107:426?computer_id=PC01') #클라이언트 세팅
+#client_config.json에서 클라이언트 설정
+with open("client_config.json", "r", encoding="utf-8") as f:
+    cfg = json.load(f)
+
+server_url = cfg["server_url"]
+computer_id = cfg["computer_id"]
+
+sio.connect(f"{server_url}?computer_id={computer_id}")
 
 sio.wait()
 
