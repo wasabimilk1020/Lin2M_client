@@ -166,7 +166,9 @@ button_mapping={
   "케트라":button_func.party_dungeon,
   "클래스합성":button_func.class_add,
   "아가합성":button_func.aga_add,
-  "거래소":button_func.exchange,
+  "거래소":button_func.item_exchange,
+  "재등록":button_func.re_exchange,
+
 
 }
 

@@ -848,7 +848,7 @@ def aga_add(sio, data, btn_name, character_name):
 
   return 1, "message:None"
 
-def exchange(sio, data, btn_name, character_name):
+def item_exchange(sio, data, btn_name, character_name):
   coord=data
   cnt=data[4]
   name=character_name
@@ -885,6 +885,28 @@ def exchange(sio, data, btn_name, character_name):
         slot_x=slot_x+77
     else:
       break
+  escKey()  #나가기
+
+  return 1, "message:None"
+
+def re_exchange(sio, data, btn_name, character_name):
+  coord=data
+  cnt=data[4]
+  name=character_name
+
+  keyboard("n") #거래소
+  time.sleep(2)
+
+  result=client_utils.searchImg('add_sell.png', beforeDelay=0, afterDelay=2,_region=(530,255,600,100))
+  if(result==0):
+    return 0, "판매등록 실패"
+
+  randClick(1125,833,10,10,0) #모두선택
+  randClick(1447,833,10,10,0) #선택 재등록
+  result=client_utils.searchImg('confirm.png',beforeDelay=1, afterDelay=1, _region=(920,580,300,200))
+  if(result==1):
+    time.sleep(8)
+    
   escKey()  #나가기
 
   return 1, "message:None"
