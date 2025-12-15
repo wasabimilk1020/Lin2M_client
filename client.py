@@ -169,6 +169,8 @@ button_mapping={
   "거래소":button_func.item_exchange,
   "재등록":button_func.re_exchange,
   "정산":button_func.get_exchange,
+  "마력잉크":button_func.magic_ink,
+
   
 }
 

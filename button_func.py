@@ -927,4 +927,33 @@ def get_exchange(sio, data, btn_name, character_name):
 
   return 1, "message:None"
 
+def magic_ink(sio, data, btn_name, character_name):
+  coord=data
+  cnt=data[4]
+  name=character_name
+
+  #상점 클릭
+  keyboard('u')
+  time.sleep(3)
   
+  result=client_utils.searchImg('adChk.png', beforeDelay=1, afterDelay=1, _region=(235,665,350,235))  #광고 체크 
+  #광고 없으면 그냥 진행 (예외처리 필요 없음)
+
+  #교환소 클릭
+  result=client_utils.searchImg('exchange.png', beforeDelay=0, afterDelay=1, _region=(340,210,1260,160))
+  if(result==0):
+    escKey()
+    return 0, "교환소 클릭 실패"
+  
+  randClick(1405,545,10,10,0) #사제의뢰 클릭
+
+  result=client_utils.searchImg('ink.png', beforeDelay=0, afterDelay=1, _region=(355,655,1000,200))
+  if(result==0):
+    escKey()
+    return 0, "잉크 클릭 실패"
+
+  randClick(1045,705,10,10,0) #구매
+    
+  escKey()  #나가기
+
+  return 1, "message:None"
