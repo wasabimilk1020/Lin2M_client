@@ -168,8 +168,8 @@ button_mapping={
   "아가합성":button_func.aga_add,
   "거래소":button_func.item_exchange,
   "재등록":button_func.re_exchange,
-
-
+  "정산":button_func.get_exchange,
+  
 }
 
 @sio.event

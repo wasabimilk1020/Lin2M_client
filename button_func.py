@@ -911,4 +911,20 @@ def re_exchange(sio, data, btn_name, character_name):
 
   return 1, "message:None"
 
+def get_exchange(sio, data, btn_name, character_name):
+  coord=data
+  cnt=data[4]
+  name=character_name
+
+  keyboard("n") #거래소
+  time.sleep(2)
+
+  randClick(777,275,10,10,1) #정산
+
+  randClick(1450,835,10,10,0) #정산 확인
+    
+  escKey()  #나가기
+
+  return 1, "message:None"
+
   
