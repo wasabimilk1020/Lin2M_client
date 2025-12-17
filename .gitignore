@@ -2,3 +2,4 @@ serial_comm.py
 __pycache__/
 *.pyc
 client_config.json
+computer_restart/
