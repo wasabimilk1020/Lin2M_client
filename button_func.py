@@ -563,7 +563,7 @@ def store(sio, data,btn_name, character_name):
     return 0, "교환소 클릭 실패"
   
   #품절 체크
-  result=client_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(350,660,1000,200))
+  result=client_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(600,660,750,200))
   if(result==1):
     return 0, "솔드아웃"
   
