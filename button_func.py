@@ -45,8 +45,12 @@ def normalHunting(sio, data,btn_name, character_name):
     return 0, "기억장소 메뉴 실패"
 
   randClick(660,345,10,10,1)  #장소 클릭
+
+  result_coord=client_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
+ 
   for i in range(7):
-    randClick(1540,390,0,0,0) #시간 충전
+    randClick(result_coord[0],result_coord[1],2,2,0) #시간 충전
+
   result_2=client_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
   if result_2==1: #마을 체크
     result_village=client_utils.searchImg('portion.png',beforeDelay=4, afterDelay=0, chkCnt=11, justChk=True, _region=(340,245,200,300))
@@ -166,8 +170,10 @@ def dungeon(sio, data, btn_name, character_name):
     
     randClick(coord[0],coord[1],coord[2],coord[3],1)  #층 클릭 (설정 해줘야함 json에서)
     
+    result_coord=client_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
+ 
     for i in range(7):
-      randClick(1540,390,0,0,0) #시간 충전
+      randClick(result_coord[0],result_coord[1],2,2,0) #시간 충전
       
     result_3=client_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
 
