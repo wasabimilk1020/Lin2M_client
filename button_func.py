@@ -49,7 +49,7 @@ def normalHunting(sio, data,btn_name, character_name):
   result_coord=client_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
  
   for i in range(7):
-    randClick(result_coord[0],result_coord[1],2,2,0) #시간 충전
+    randClick(result_coord[0],result_coord[1],0,0,0) #시간 충전
 
   result_2=client_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
   if result_2==1: #마을 체크
@@ -173,7 +173,7 @@ def dungeon(sio, data, btn_name, character_name):
     result_coord=client_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
  
     for i in range(7):
-      randClick(result_coord[0],result_coord[1],2,2,0) #시간 충전
+      randClick(result_coord[0],result_coord[1],0,0,0) #시간 충전
       
     result_3=client_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
 
