@@ -170,6 +170,8 @@ button_mapping={
   "재등록":button_func.re_exchange,
   "정산":button_func.get_exchange,
   "마력잉크":button_func.magic_ink,
+  "창정렬":button_func.move_window,
+
 
   
 }
