@@ -457,7 +457,7 @@ def event_store(sio, data,btn_name, character_name, handle):
   # randClick(1050,650,5,5,0) 
   # escKey()
 
-  result=normalHunting(sio, data,btn_name, character_name)
+  result=normalHunting(sio, data,btn_name, character_name, handle)
   return result
 
 #거리 40M
@@ -708,7 +708,7 @@ def unparty(sio, data,btn_name, character_name, handle):
       break
     y=y+60
 
-  result=normalHunting(sio, data, btn_name, character_name)
+  result=normalHunting(sio, data, btn_name, character_name, handle)
   return result
 
 def party_dungeon(sio, data, btn_name, character_name, handle):
