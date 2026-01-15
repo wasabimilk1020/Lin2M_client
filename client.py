@@ -254,7 +254,10 @@ def send_ping():
         time.sleep(2)
 
 #client_config.json에서 클라이언트 설정
-with open("client_config.json", "r", encoding="utf-8") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+config_path = os.path.join(BASE_DIR, "client_config.json")
+
+with open(config_path, "r", encoding="utf-8") as f:
     cfg = json.load(f)
 
 server_url = cfg["server_url"]
