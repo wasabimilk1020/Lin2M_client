@@ -1,19 +1,18 @@
 import subprocess
 import os
 from utils import file_path
+import sys
 
 def run_git_update():
     bat_script = file_path("run_git_update.bat")
 
     if not os.path.exists(bat_script):
-        print(f"오류: '{bat_script}' 파일을 찾을 수 없습니다.")
+        print(f"업데이트 스크립트 없음: {bat_script}")
         return
 
-    # 이 파일 기준 프로젝트 루트
-    project_root = os.path.dirname(os.path.abspath(__file__))
+    # 업데이트 배치 실행 (새 프로세스로)
+    subprocess.Popen(["cmd.exe", "/c", bat_script])
 
-    subprocess.run(
-        ["cmd.exe", "/c", bat_script],
-        cwd=project_root,
-        shell=True
-    )
+    # 자기 자신 종료
+    sys.exit()
+
