@@ -1,9 +1,9 @@
 @echo off
 
-REM 이 배치가 실행되는 위치를 프로젝트 루트로 맞춤
-cd /d "%~dp0\.."
+REM 현재 위치 확인 (디버깅 끝나면 지워도 됨)
+REM cd
 
-REM 혹시 남아있는 python 프로세스 정리 (선택)
+REM 혹시 실행 중인 python 종료 (선택)
 taskkill /IM python.exe /F >nul 2>&1
 
 REM 업데이트
