@@ -1,14 +1,16 @@
 import pyautogui
 import sys
-import client_utils
+import img_search_utils
 import time
 from button_func import *
 import win32gui
 import win32con
 from get_account import *
 
-for i in range(5):
-    print("kim")
+data={'days': 'WED', 'time': '07:00'}
+print(data['days'])
+
+
 
 
 

@@ -1,6 +1,6 @@
 import serial_comm
 import check_hunting
-import client_utils
+import img_search_utils
 
 ERR_MSG = 0
 STATUS_MSG = 1
@@ -8,7 +8,7 @@ STATUS_MSG = 1
 def go_to_sleep_and_huntingChk(btn_name, character_name, sio):
   for i in range(3):
     serial_comm.keyboard('g')
-    result=client_utils.searchImg('sleepChk.png', beforeDelay=1, afterDelay=0,  chkCnt=2, _region=(850, 455, 200, 200))  
+    result=img_search_utils.searchImg('sleepChk.png', beforeDelay=1, afterDelay=0,  chkCnt=2, _region=(850, 455, 200, 200))  
     if result ==1:
       break
   

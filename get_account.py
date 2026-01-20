@@ -3,7 +3,7 @@ import win32gui
 import win32com.client
 shell = win32com.client.Dispatch("WScript.Shell")
 from serial_comm import *
-import client_utils
+import img_search_utils
 import re
 
 # 현재 실행중인 윈도우 핸들 목록 가져오기

@@ -18,24 +18,17 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "computer_restart"))
 import computer_restart
 import game_exe
-import client_utils
+import img_search_utils
+import utils
 import connect_request
 import re
+import code_update
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s") # 로깅 설정
 last_pong_time = None # 마지막으로 pong을 받은 시간
 PONG_TIMEOUT = 8  # 초 (pong 응답 대기 시간)
 
 character_list={}
-
-def load_json(json_file, json_folder): #file, folder
-  full_path=client_utils.file_path(json_file, json_folder)  #file, folder, sub_folder
-
-  try:
-    with open(full_path, "r", encoding="utf-8") as f:
-      return json.load(f)
-  except (FileNotFoundError, json.JSONDecodeError):
-    return {}  # 파일이 없거나 잘못된 JSON이면 빈 데이터 반환
   
 # 작업 큐 생성
 task_queue = queue.Queue()
@@ -69,33 +62,30 @@ def connect():
   global last_pong_time
   global character_list
   print('connection established')   
+  character_list=utils.load_json("character_list.json","config_json")
+  last_pong_time = time.time()  #서버가 다시 연결되었을 때 타이머 초기화 (이전 타이머 값이 남아있을 경우 방지)
 
-  character_list=load_json("character_list.json","character_list_json")
-  
-  #서버가 다시 연결되었을 때 타이머 초기화 (이전 타이머 값이 남아있을 경우 방지)
-  last_pong_time = time.time()
+  if serial_comm.ser is None or not serial_comm.ser.is_open:
+    serial_comm.connect_serial()
 
-  #연결이 완전히 완료될 때까지 대기
-  while not sio.connected:
-      time.sleep(0.1)  # 100ms 간격으로 체크
   sio.start_background_task(monitor_connection)
   sio.start_background_task(send_ping)
 
 @sio.event
 def disconnect():
   global last_pong_time
-  print("서버와 연결 끊김")
-  last_pong_time = None #퐁 타임 초기화화
-  if serial_comm.ser.isOpen():
-    serial_comm.ser.flushInput()
-    serial_comm.ser.flushOutput()
-    serial_comm.ser.close()
+  print("disconnet 호출! 서버와 연결 끊김")
+  last_pong_time = None #퐁 타임 초기화
+  if serial_comm.ser is not None and serial_comm.ser.is_open:
+    # serial_comm.ser.flushInput()
+    # serial_comm.ser.flushOutput()
+    serial_comm.close_serial()
 
 # @sio.event
 # def reqAccount(data):
 #   global character_list
 
-#   full_path=client_utils.file_path("character_list.json","character_list_json")  #file, folder, sub_folder
+#   full_path=utils.file_path("character_list.json","character_list_json")  #file, folder, sub_folder
 #   def sort_key(text):
 #     # 첫 번째 공백을 기준으로 앞(서버)과 뒤(아이디)를 나눔
 #     server_part, id_part = text.split(" ", 1)  
@@ -117,7 +107,7 @@ def disconnect():
 def reqAccount(data):
   global character_list
 
-  full_path=client_utils.file_path("character_list.json","character_list_json")  #file, folder, sub_folder 
+  full_path=utils.file_path("character_list.json","config_json")  #file, folder, sub_folder 
   
   accont_dict=get_account.get_account_list(sio)
 
@@ -125,6 +115,7 @@ def reqAccount(data):
     json.dump(accont_dict, f, indent=4, ensure_ascii=False)
   sio.emit("revAccount", accont_dict)
 
+#이렇게 일일이 버튼을 맵핑시켜주는게 아니라 버튼 생성하면 저절로 처리되도록 만들고 싶은데...
 button_mapping={
   "status_check_button":button_func.statusChk,  
   "사냥":button_func.normalHunting,
@@ -204,7 +195,7 @@ def recvImage(data):
   file_name=data[2]
   calculated_hash = hashlib.sha256(img.encode("utf-8")).hexdigest()
 
-  full_path=client_utils.file_path(f"{file_name}","image_files")  #file, folder, sub_folder
+  full_path=utils.file_path(f"{file_name}","image_files")  #file, folder, sub_folder
 
   # 해시 확인
   if hash_value==calculated_hash: 
@@ -218,47 +209,53 @@ def recvImage(data):
     print("데이터가 손상되었거나 무결성 검증 실패!")
 
 @sio.event
-def reboot_computer(data):
-  computer_restart.run_bat_as_admin()
+def reboot_computer(data):  #data={'days': 'WED', 'time': '07:00'}
+  computer_restart.run_bat_as_admin(data)
 
 @sio.event
 def game_start(data):
   game_exe.start_game()
 
-# @sio.event
-# def connect_request_from_server(data):
-#   connect_request.conn_req()
+@sio.event
+def update_code(data):
+  code_update.run_git_update()
+  print("코드 업데이트완료")
 
 @sio.event
 def pong(data):
-    global last_pong_time
-    # logging.info(f"Received pong from server: {data['time']}")
-    last_pong_time = time.time()  # pong 수신 시 갱신
+  global last_pong_time
+  # logging.info(f"Received pong from server: {data['time']}")
+  last_pong_time = time.time()  # pong 수신 시 갱신
 
 def monitor_connection():
-    global last_pong_time
-    while True:
-        if not sio.connected:
-            logging.warning("서버와의 연결이 끊겼습니다. 모니터링 중단.")
-            break
-        if last_pong_time and time.time() - last_pong_time > PONG_TIMEOUT:
-            logging.error("서버 응답 없음, 연결 종료.")
-            sio.disconnect()  # 명시적으로 연결 종료
-            break
-        time.sleep(1)  # 1초마다 상태 확인
+  global last_pong_time
+
+  while not sio.connected:  #첫 호출 시 연결상태 확인. 반드시 연결 후 아래 루프 시작하기 위해서
+    time.sleep(0.01)
+    continue
+
+  while True:
+    if last_pong_time and time.time() - last_pong_time > PONG_TIMEOUT:
+      logging.error("서버 응답 없음, 연결 종료.")
+      sio.disconnect()  # 명시적으로 연결 종료
+      break
+    time.sleep(1)  # 1초마다 상태 확인
 
 def send_ping():
-    while sio.connected:
-        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        sio.emit("ping", {"time": current_time})
-        time.sleep(2)
+  while not sio.connected:  #첫 호출 시 연결상태 확인. 반드시 연결 후 아래 루프 시작하기 위해서
+    time.sleep(0.01)
+    continue
+  
+  while True:
+    if not sio.connected:
+      break
+
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sio.emit("ping", {"time": current_time})
+    time.sleep(2)
 
 #client_config.json에서 클라이언트 설정
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-config_path = os.path.join(BASE_DIR, "client_config.json")
-
-with open(config_path, "r", encoding="utf-8") as f:
-    cfg = json.load(f)
+cfg=utils.load_json("client_config.json","config_json")
 
 server_url = cfg["server_url"]
 computer_id = cfg["computer_id"]
@@ -267,4 +264,4 @@ sio.connect(f"{server_url}?computer_id={computer_id}")
 
 sio.wait()
 
-#절전모드 시 멈춰있으면 사냥을 하게 만들어줘야함. 지금은 그냥 "멈춰있음" 로그 발생 시키고 맘맘
+

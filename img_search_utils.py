@@ -8,13 +8,14 @@ import win32com.client
 shell = win32com.client.Dispatch("WScript.Shell")
 import win32gui
 from serial_comm import *
+import utils
 import pytesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 from PIL import ImageGrab,ImageEnhance,Image,ImageOps,ImageFilter
 
 #이미지 서치
 def searchImg(imgTitle, beforeDelay, afterDelay, justChk=False, coord=[], chkCnt=5, _region=(300, 125, 1370, 790), accuracy=0.85):
-  full_path=file_path(f"{imgTitle}","image_files")  #file, folder, sub_folder
+  full_path=utils.file_path(f"{imgTitle}","image_files")  #file, folder, sub_folder
   chkInterval=0.5
   loopCnt = 0
 
@@ -48,7 +49,7 @@ def searchImg(imgTitle, beforeDelay, afterDelay, justChk=False, coord=[], chkCnt
   return 0  
 
 def caputure_image(name,x,y,sio):
-  full_path=file_path(f"{name}.png","image_files","capture_img")  #file, folder, sub_folder
+  full_path=utils.file_path(f"{name}.png","image_files","capture_img")  #file, folder, sub_folder
 
   time.sleep(0.2)
   pyautogui.screenshot(full_path, region=(x,y,50,30))
@@ -60,20 +61,52 @@ def caputure_image(name,x,y,sio):
   data=[name, nowDatetime, captureImg] 
   sio.emit("captured_image",data)
 
-def getWindow(handle):
-  startClick(0,0,0,0,0)
-  time.sleep(0.1)
-  shell.SendKeys('%')
-  try:
-    win32gui.SetForegroundWindow(handle)  # 창을 앞으로 가져오기 시도
-  except Exception as e:
-    return 0, "Error bringing window to foreground"
+# def getWindow(handle):
+#   startClick(0,0,0,0,0)
+#   time.sleep(0.1)
+#   shell.SendKeys('%')
+#   try:
+#     win32gui.SetForegroundWindow(handle)  # 창을 앞으로 가져오기 시도
+#   except Exception as e:
+#     return 0, "Error bringing window to foreground"
   
-  for _ in range(10): # 최대 3초 동안 (0.3초 간격으로 10번) 창 활성화 확인
-      if win32gui.GetForegroundWindow() == handle:
-          return 1, "성공" 
-      time.sleep(0.3)  
-  return 0, "Error: Window did not come to foreground within timeout."
+#   for _ in range(10): # 최대 3초 동안 (0.3초 간격으로 10번) 창 활성화 확인
+#       if win32gui.GetForegroundWindow() == handle:
+#           return 1, "성공" 
+#       time.sleep(0.3)  
+#   return 0, "Error: Window did not come to foreground within timeout."
+
+# import win32process, win32api
+
+# def forceForeground(handle):
+#     fg = win32gui.GetForegroundWindow()
+#     tid1 = win32api.GetCurrentThreadId()
+#     tid2 = win32process.GetWindowThreadProcessId(fg)[0]
+#     tid3 = win32process.GetWindowThreadProcessId(handle)[0]
+
+#     win32api.AttachThreadInput(tid1, tid2, True)
+#     win32api.AttachThreadInput(tid1, tid3, True)
+
+#     win32gui.ShowWindow(handle, 5)
+#     win32gui.SetForegroundWindow(handle)
+
+#     win32api.AttachThreadInput(tid1, tid2, False)
+#     win32api.AttachThreadInput(tid1, tid3, False)
+
+
+def getWindow(handle):
+    try:
+      time.sleep(0.1)
+      shell.SendKeys('%')
+      win32gui.SetForegroundWindow(handle)
+      startClick(850,440,100,100,0)
+    except:
+      pass  # 실패해도 무시
+
+    return 1, "성공"
+
+
+
 
 def capture_text_from_region(x, y, width, height, _config, binary_val):
   binary_value=binary_val
@@ -107,18 +140,3 @@ def capture_text_from_region(x, y, width, height, _config, binary_val):
 
   return text, "capture_text 성공"
 
-def file_path(_file, _folder=None, _sub_folder=None):
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
-    # None이 아닌 값만 경로에 포함
-    path_parts = [BASE_DIR]
-    if _folder:
-        path_parts.append(_folder)
-    if _sub_folder:
-        path_parts.append(_sub_folder)
-    path_parts.append(_file)
-
-    # 경로 조합
-    full_path = os.path.join(*path_parts)
-
-    return full_path
