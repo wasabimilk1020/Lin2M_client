@@ -219,7 +219,6 @@ def game_start(data):
 @sio.event
 def update_code(data):
   code_update.run_git_update()
-  print("코드 업데이트완료")
 
 @sio.event
 def pong(data):
