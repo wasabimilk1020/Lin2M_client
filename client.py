@@ -26,7 +26,7 @@ import code_update
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s") # 로깅 설정
 last_pong_time = None # 마지막으로 pong을 받은 시간
-PONG_TIMEOUT = 8  # 초 (pong 응답 대기 시간)
+PONG_TIMEOUT = 20  # 초 (pong 응답 대기 시간)
 
 character_list={}
   
@@ -251,7 +251,7 @@ def send_ping():
 
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     sio.emit("ping", {"time": current_time})
-    time.sleep(2)
+    time.sleep(5)
 
 #client_config.json에서 클라이언트 설정
 cfg=utils.load_json("client_config.json","config_json")

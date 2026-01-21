@@ -719,7 +719,7 @@ def party_dungeon(sio, data, btn_name, character_name, handle):
 
   keyboard("`") #던전
   # result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
-  result=img_search_utils.searchImg('party.png',beforeDelay=0, afterDelay=0, _region=(630, 230, 400, 100))
+  result=img_search_utils.searchImg('party.png',beforeDelay=1, afterDelay=0, _region=(630, 230, 400, 100))
   if(result==0):
     return 0, "파티클릭 실패"
   
