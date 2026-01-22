@@ -165,10 +165,10 @@ def dungeon(sio, data, btn_name, character_name, handle):
       time.sleep(2)
 
     keyboard('v')
-    img_search_utils.searchImg('stop_schedule.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
-    randClick(1075,820,10,10,0) #초기화 클릭
+    img_search_utils.searchImg('stop_schedule.png',beforeDelay=0.5, afterDelay=0.5, _region=(1260,790,300,100))
+    randClick(1075,820,10,10,0.5) #초기화 클릭
 
-    result=img_search_utils.searchImg('sanga.png',beforeDelay=0, afterDelay=1, _region=(480, 455, 400, 300))
+    result=img_search_utils.searchImg('sanga.png',beforeDelay=0.5, afterDelay=0.5, _region=(480, 455, 400, 300))
     if(result==0):
       return 0, "상아탑 클릭 실패"
     
@@ -177,7 +177,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result_coord=img_search_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
  
     for i in range(7):
-      randClick(result_coord[0],result_coord[1],0,0,0) #시간 충전
+      randClick(result_coord[0],result_coord[1],0,0,0.3) #시간 충전
       
     result_3=img_search_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
 
