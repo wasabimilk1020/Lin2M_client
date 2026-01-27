@@ -2,17 +2,15 @@ import img_search_utils
 import time
 import re
 
-x, y, width, height = 810, 660, 295, 65 #자동 사냥 범위
-config="--psm 7 -c preserve_interword_spaces=1"
-binary_value=130
+x, y, width, height = 805,670, 310, 50 #매칭 위치
 
+match_list=["auto_hunting.png", "auto_organize.png", "auto_schedule.png"]
 def checkHunting():
   for i in range(5):
-    text=img_search_utils.capture_text_from_region(x, y, width, height, config, binary_value)
-    if text[0]==0:  #capture_text_from_region 예외 발생
-      return text[0], text[1]
-    clean_text=re.sub(r"^\s+|\s+$", "", text[0])  # 정규식으로 앞뒤 공백 제거
-    if clean_text == "스케줄 자동 진행 중" or clean_text == "자동 사냥 중" or clean_text=="스케줄 자동 정비 진행 중":
-      return clean_text, ""
+    match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height)
+    if match_result[0]==2:  #템플릿 매칭 예외 발생
+      return match_result[0], match_result[1]
+    elif match_result[0] in ["auto_hunting.png", "auto_organize.png", "auto_schedule.png"]: #매칭 성공
+      return match_result[0].replace(".png", ""), ""
     time.sleep(0.3)
-  return 1, "사냥 멈춰있음" #실패를 나타냄
+  return 0, "사냥 멈춰있음" #실패를 나타냄

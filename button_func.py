@@ -15,17 +15,17 @@ def statusChk(sio, data, btn_name, character_name, handle):
   name=character_name
  
   value=check_hunting.checkHunting() #value=성공 시=문자열, 실패 시=0
-  if value[0]==1: #1을 return (사냥을 하지 않고 있다는 뜻)
+  if value[0]==0: #0을 return (사냥을 하지 않고 있다는 뜻)
     result=waking_from_sleep_and_deathChk(btn_name, sleep_time=2)
     if result==1: #사망 체크를 수행 했는대 chk.png가 확인 안되서 실패
       return 0, "페널티 체크 루틴 실패"
     result=normalHunting(sio, data, btn_name, character_name, handle)
     return result
-  elif value[0]==0: #capture_text_from_region 예외 발생
+  elif value[0]==2: #capture_text_from_region 예외 발생
     return 1, value[1]
   else:  #성공
     text=value[0]
-    return 2, text
+    return 2, text  #다른 일반 버튼 루틴과 다르게 처리하기 위해서statusChk완료를 2를 리턴함으로서 알림.
 
 def normalHunting(sio, data,btn_name, character_name, handle):
   coord=data
@@ -914,7 +914,7 @@ def re_exchange(sio, data, btn_name, character_name, handle):
   randClick(1447,833,10,10,0) #선택 재등록
   result=img_search_utils.searchImg('confirm.png',beforeDelay=0, afterDelay=1, _region=(920,580,300,200))
   if(result==1):
-    time.sleep(15)
+    time.sleep(20)
     
   escKey()  #나가기
 
