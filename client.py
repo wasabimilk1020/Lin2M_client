@@ -109,11 +109,13 @@ def reqAccount(data):
 
   full_path=utils.file_path("character_list.json","config_json")  #file, folder, sub_folder 
   
-  accont_dict=get_account.get_account_list(sio)
+  account_dict=get_account.get_account_list(sio) #윈도우를 돌면서 어카운트 정보를 얻음
 
-  with open(full_path, "w", encoding="utf-8") as f:
-    json.dump(accont_dict, f, indent=4, ensure_ascii=False)
-  sio.emit("revAccount", accont_dict)
+  with open(full_path, "w", encoding="utf-8") as f: #account_dict의 내용을 json에 쓰기
+    json.dump(account_dict, f, indent=4, ensure_ascii=False)
+
+  character_list=utils.load_json("character_list.json","config_json") #새로운 account정보가 json에 써졌으므로 다시 load
+  sio.emit("revAccount", account_dict)
 
 #이렇게 일일이 버튼을 맵핑시켜주는게 아니라 버튼 생성하면 저절로 처리되도록 만들고 싶은데...
 button_mapping={
@@ -163,10 +165,7 @@ button_mapping={
   "마력잉크":button_func.magic_ink,
   "창정렬":button_func.move_window,
   "실행광고":button_func.gameExe_adRemove,
-
-
-
-  
+ 
 }
 
 @sio.event
