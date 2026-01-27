@@ -980,3 +980,12 @@ def move_window(sio, data, btn_name, character_name, handle):
 )
 
   return 1, "message:None"
+
+
+def gameExe_adRemove(sio, data, btn_name, character_name, handle):
+  coord=data
+  cnt=data[4]
+  name=character_name
+  result=img_search_utils.searchImg('adChk.png', beforeDelay=0.5, afterDelay=0.5, _region=(235,665,350,235))  #광고 체크 
+
+  return 1, "message:None"

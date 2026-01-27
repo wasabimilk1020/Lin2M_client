@@ -162,6 +162,8 @@ button_mapping={
   "정산":button_func.get_exchange,
   "마력잉크":button_func.magic_ink,
   "창정렬":button_func.move_window,
+  "실행광고":button_func.gameExe_adRemove,
+
 
 
   
