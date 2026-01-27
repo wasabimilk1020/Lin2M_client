@@ -804,7 +804,7 @@ def go_home(sio, data, btn_name, character_name, handle):
   img_search_utils.caputure_image(name, 355, 410, sio) #name, x, y, sio
 
   keyboard('7') #귀환
-  result=img_search_utils.searchImg('chk.png', beforeDelay=5, afterDelay=2, justChk=True, chkCnt=10,_region=(910,180,230,70))
+  result=img_search_utils.searchImg('chk.png', beforeDelay=7, afterDelay=2, justChk=True, chkCnt=10,_region=(910,180,230,70))
   if(result==0):
     return 0, f"{btn_name} 이동 실패"
   
