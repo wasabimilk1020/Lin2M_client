@@ -542,13 +542,13 @@ def guild(sio, data,btn_name, character_name, handle):
   name=character_name
   keyboard('.')
 
-  # result=img_search_utils.searchImg('guildAttendance.png', beforeDelay=1, afterDelay=1, accuracy=0.9,_region=(500,610,300,150)) 
-  # if(result==0):
-  #   return 0, "혈맹 체크 실패"
+  result=img_search_utils.searchImg('guildAttendance.png', beforeDelay=1, afterDelay=1, accuracy=0.9,_region=(500,610,300,150)) 
+  if(result==0):
+    return 0, "혈맹 체크 실패"
   
-  randClick(915, 820, 20, 20, 1.5)  #기부
+  randClick(915, 820, 20, 20, 0)  #기부
   
-  result=img_search_utils.searchImg('donation.png', beforeDelay=0, afterDelay=1,_region=(440,660,400,200)) 
+  result=img_search_utils.searchImg('donation.png', beforeDelay=1, afterDelay=1,_region=(440,660,400,200)) 
   if(result==0):
     return 0, "일괄기부 실패"
   
@@ -612,15 +612,15 @@ def morning(sio, data,btn_name, character_name, handle):
   name=character_name
 
   # 데일리 
-  # daily(sio, data,btn_name, character_name, handle)
+  daily(sio, data,btn_name, character_name, handle)
   # 혈맹 
   result_1=guild(sio, data,btn_name, character_name, handle)
   if(result_1[0]==0):
     return result_1[0], result_1[1]
   #상점
-  # result_2=store(sio, data,btn_name, character_name, handle)
-  # if(result_2[0]==0):
-  #   return result_2[0], result_2[1]
+  result_2=store(sio, data,btn_name, character_name, handle)
+  if(result_2[0]==0):
+    return result_2[0], result_2[1]
 
   img_search_utils.caputure_image(name, 387,258, sio) #name, x, y, sio
 
