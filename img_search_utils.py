@@ -212,5 +212,6 @@ def img_matchTemplate(temp_imgTitle_list, x, y, width, height, confidence=0.6):
       _, max_val, _, max_loc = cv2.minMaxLoc(result)
 
       if max_val >= confidence: #매칭 성공
+        # print(max_val)
         return title, "capture_text 성공"
     return 0, max_val

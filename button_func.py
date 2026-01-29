@@ -546,9 +546,11 @@ def guild(sio, data,btn_name, character_name, handle):
   if(result==0):
     return 0, "혈맹 체크 실패"
   
-  randClick(915, 820, 20, 20, 1)  #기부
+  randClick(915, 820, 20, 20, 1.5)  #기부
   
-  randClick(555,745,10,10,1)  #기본기부 받기
+  result=img_search_utils.searchImg('donation.png', beforeDelay=0, afterDelay=1,_region=(440,660,400,200)) 
+  if(result==0):
+    return 0, "일괄기부 실패"
   
   escKey()  #기부 나가기
   escKey()  #혈맹 나가기

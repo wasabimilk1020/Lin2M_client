@@ -5,8 +5,10 @@ from button_func import *
 import win32gui
 from PIL import ImageGrab,ImageEnhance,Image,ImageOps,ImageFilter
 
+time.sleep(2)
+print("시작")
 for i in range(10):
-  result=img_search_utils.img_matchTemplate(["auto_hunting.png","auto_organize.png","auto_schedule.png"], 805,670, 310, 50)
+  result=img_search_utils.img_matchTemplate(["auto_hunting.png","auto_organize.png","auto_schedule.png"], 300, 125, 1370, 790)
   time.sleep(0.3)
   print("결과",result)
 # img_search_utils.preprocess_image("debug_capture_3.png", "preprocessed_3.png")
