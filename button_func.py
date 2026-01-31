@@ -344,8 +344,8 @@ def agasion(sio, data,btn_name, character_name, handle):
   randClick(1220,460,5,5,1) #왼쪽 메뉴 클릭
 
   while True:
-    randClick(1290,505,5,5,0.5) #첫 번째 카드 클릭
-    randClick(1290,505,5,5,0)
+    randClick(1285,650,5,5,0.5) #첫 번째 카드 클릭
+    randClick(1285,650,5,5,0)
     result=img_search_utils.searchImg('agasionFirstChk.png', beforeDelay=1, afterDelay=1, justChk=True, _region=(800,750,300,200))
     if(result==0):
       break
