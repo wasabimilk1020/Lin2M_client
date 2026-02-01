@@ -406,9 +406,11 @@ def paper(sio, data,btn_name, character_name, handle):
   randClick(1373,737,5,5,0.5)
   result=img_search_utils.searchImg('paper_make.png', beforeDelay=1, afterDelay=1, _region=(1255,488,200,100))
   if(result==0):
-    return 0, "신탁서 제작 클릭 실패"
+    return 0, "제작 클릭 실패"
 
-  randClick(1230,475,5,5,2)
+  result=img_search_utils.searchImg('sintak.png', beforeDelay=1, afterDelay=1, _region=(740,365,750,340))
+  if(result==0):
+    return 0, "신탁서 클릭 실패"
 
   for i in range(6):
     randClick(630,345,10,10,0.5)
