@@ -593,7 +593,7 @@ def store(sio, data,btn_name, character_name, handle):
   #일괄 구매
   randClick(1442, 850, 100, 10, 0.5)
   #구매
-  randClick(1039, 771, 100, 10, 2.5)
+  randClick(1039, 771, 100, 10, 3.5)
 
   # #---사제의 의뢰 시작
   # randClick(1405, 544, 100, 10, 0.5)
