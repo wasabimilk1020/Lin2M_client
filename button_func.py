@@ -445,8 +445,8 @@ def paper(sio, data,btn_name, character_name, handle):
     if(result==0):
       break
     time.sleep(3)
-    randClick(945,820,10,10,1)  #확인
-    randClick(945,820,10,10,0.5)
+    randClick(945,820,10,10,3)  #건너뛰기
+    randClick(945,820,10,10,0.5) #확인
 
   escKey()  #나가기
   
