@@ -373,20 +373,41 @@ def itemDelete(sio, data,btn_name, character_name, handle):
   time.sleep(1)
   randClick(1225,405,5,5,1)
 
-  randClick(1365,355,5,5,0.5) #순간이동
-  randClick(1305,740,5,5,0.5)
-  randClick(1030,705,5,5,0.5)
-  randClick(1055,655,5,5,0.5)
+  #1295,355
+  x,y=1295, 355 #초기 x,y좌표
+  for i in range(2):
+    for j in range(4):
+      randClick(x,y,5,5,0.5) #아이템클릭
+      randClick(1305,740,5,5,0.5)
+      result=img_search_utils.searchImg('item_delete_confirm.png', beforeDelay=0, afterDelay=0.5, _region=(875,585,400,200))
+      if(result==0):
+        randClick(1055,655,5,5,0.5)
+        # return 0, "아이템삭제 실패"
+      randClick(1055,655,5,5,0.5)
+      x+=75
+    x=1295 #x좌표 초기화
+    y+=100
 
-  randClick(1295,355,5,5,0.5) #물약
-  randClick(1305,740,5,5,0.5)
-  randClick(1030,705,5,5,0.5)
-  randClick(1055,655,5,5,2)
+  # randClick(1295,355,5,5,0.5) #물약
+  # randClick(1305,740,5,5,0.5)
 
-  randClick(1295,425,5,5,0.5) #초록물약
-  randClick(1305,740,5,5,0.5)
-  randClick(1030,705,5,5,0.5)
-  randClick(1055,655,5,5,2)
+  # randClick(1030,705,5,5,0.5)
+  # randClick(1055,655,5,5,2)
+
+  # randClick(1365,355,5,5,0.5) #순간이동
+  # randClick(1305,740,5,5,0.5)
+  # randClick(1030,705,5,5,0.5)
+  # randClick(1055,655,5,5,0.5)
+
+  # randClick(1295,425,5,5,0.5) #초록물약
+  # randClick(1305,740,5,5,0.5)
+  # randClick(1030,705,5,5,0.5)
+  # randClick(1055,655,5,5,2)
+
+  # randClick(1365,425,5,5,0.5) #마나물약
+  # randClick(1305,740,5,5,0.5)
+  # randClick(1030,705,5,5,0.5)
+  # randClick(1055,655,5,5,2)
 
   result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
   if(result==0):
@@ -402,17 +423,20 @@ def paper(sio, data,btn_name, character_name, handle):
   keyboard("i")
   time.sleep(1)
   randClick(1225,405,10,10,1)
-  randClick(1439,355,10,10,0.5)
+  randClick(1285,495,10,10,0.5)
   randClick(1373,737,5,5,0.5)
   result=img_search_utils.searchImg('paper_make.png', beforeDelay=1, afterDelay=1, _region=(1255,488,200,100))
   if(result==0):
     return 0, "제작 클릭 실패"
 
-  result=img_search_utils.searchImg('sintak.png', beforeDelay=1, afterDelay=1, _region=(740,365,750,340))
+  result=img_search_utils.searchImg('sintak.png', beforeDelay=0, afterDelay=2, _region=(740,365,750,340))
   if(result==0):
     return 0, "신탁서 클릭 실패"
-
+  
   for i in range(6):
+    result=img_search_utils.searchImg('sintak.png', beforeDelay=0, afterDelay=0, justChk=True, _region=(400,275,250,160))
+    if(result==0):
+      return 0, "신탁서 체크 실패"
     randClick(630,345,10,10,0.5)
     randClick(1050,825,5,5,0.5) #max클릭
     randClick(1450,825,10,10,1) #제작클릭
@@ -421,7 +445,7 @@ def paper(sio, data,btn_name, character_name, handle):
     if(result==0):
       break
     time.sleep(3)
-    randClick(945,820,10,10,1)
+    randClick(945,820,10,10,1)  #확인
     randClick(945,820,10,10,0.5)
 
   escKey()  #나가기
@@ -992,4 +1016,39 @@ def gameExe_adRemove(sio, data, btn_name, character_name, handle):
   name=character_name
   result=img_search_utils.searchImg('adChk.png', beforeDelay=0.5, afterDelay=0.5, _region=(235,665,350,235))  #광고 체크 
 
+  return 1, "message:None"
+
+def open_box(sio, data,btn_name, character_name, handle):
+  coord=data
+  delay=data[4]
+  name=character_name
+
+  keyboard("i")
+  time.sleep(1)
+  randClick(1225,405,5,5,1)
+
+  randClick(1295,575,5,5,0.5) #충전석 상자1
+  randClick(1295,575,5,5,0.5) #더블클릭
+  randClick(1025,445,5,5,0.5) #상아탑 선택 (이거 나중에 이미지나 hsv로 해야 안전할듯)
+  randClick(1020,620,5,5,0.5) #max 클릭
+  result=img_search_utils.searchImg('confirm_accept.png', beforeDelay=0, afterDelay=1, _region=(780,615,500,200))
+  if(result==0):
+    escKey()
+    return 0, "보상확정 실패"
+
+
+  randClick(1365,355,5,5,0.5) #순간이동
+  randClick(1305,740,5,5,0.5)
+  randClick(1030,705,5,5,0.5)
+  randClick(1055,655,5,5,0.5)
+
+  randClick(1295,425,5,5,0.5) #초록물약
+  randClick(1305,740,5,5,0.5)
+  randClick(1030,705,5,5,0.5)
+  randClick(1055,655,5,5,2)
+
+  result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+  if(result==0):
+    return 0, "아이템 삭제 실패"
+  
   return 1, "message:None"

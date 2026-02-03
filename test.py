@@ -5,26 +5,10 @@ from button_func import *
 import win32gui
 from PIL import ImageGrab,ImageEnhance,Image,ImageOps,ImageFilter
 
-time.sleep(2)
-print("시작")
-for i in range(10):
-  result=img_search_utils.img_matchTemplate(["auto_hunting.png","auto_organize.png","auto_schedule.png"], 300, 125, 1370, 790)
-  time.sleep(0.3)
-  print("결과",result)
-# img_search_utils.preprocess_image("debug_capture_3.png", "preprocessed_3.png")
-
-# img_search_utils.img_matchTemplate("auto_hunting.png", 895,220, 130, 35, confidence=0.8)
-# time.sleep(2)
-# hwnd = win32gui.GetForegroundWindow()
-# rect = win32gui.GetWindowRect(hwnd)
-# print(rect)
-
-# x=805
-# y=670
-# width=255
-# height=50
-# bbox = (x, y, 1115, y + height)
-# target_pil = ImageGrab.grab(bbox)
-
-# # target_pil.show()
-# target_pil.save("debug_capture_3.png")
+x,y=1295, 355 #초기 x,y좌표
+for i in range(2):
+  for j in range(4):
+    print(i,j,x,y)
+    x+=75
+  x=1295 #x좌표 초기화
+  y+=100

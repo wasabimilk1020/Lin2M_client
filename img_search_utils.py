@@ -166,7 +166,7 @@ def preprocess_image(temp_imgTitle, output_path):  #이미지 전처리
   # 저장
   cv2.imwrite(output_path, sharpened)
 
-def img_matchTemplate(temp_imgTitle_list, x, y, width, height, confidence=0.6):
+def img_matchTemplate(temp_img_list, x, y, width, height, confidence=0.6):
     # ---------- 타겟 캡처 ----------
     bbox = (x, y, x + width, y + height)
     target_pil = ImageGrab.grab(bbox)
@@ -196,7 +196,7 @@ def img_matchTemplate(temp_imgTitle_list, x, y, width, height, confidence=0.6):
     # cv2.destroyAllWindows()
 
     # ---------- 매칭 ----------
-    for title in temp_imgTitle_list:
+    for title in temp_img_list:
       # 템플릿 경로
       template_path = utils.file_path(f"{title}", "image_files")
 
