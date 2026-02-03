@@ -1027,28 +1027,38 @@ def open_box(sio, data,btn_name, character_name, handle):
   time.sleep(1)
   randClick(1225,405,5,5,1)
 
-  randClick(1295,575,5,5,0.5) #충전석 상자1
-  randClick(1295,575,5,5,0.5) #더블클릭
-  randClick(1025,445,5,5,0.5) #상아탑 선택 (이거 나중에 이미지나 hsv로 해야 안전할듯)
-  randClick(1020,620,5,5,0.5) #max 클릭
-  result=img_search_utils.searchImg('confirm_accept.png', beforeDelay=0, afterDelay=1, _region=(780,615,500,200))
-  if(result==0):
-    escKey()
-    return 0, "보상확정 실패"
-
-
-  randClick(1365,355,5,5,0.5) #순간이동
-  randClick(1305,740,5,5,0.5)
-  randClick(1030,705,5,5,0.5)
-  randClick(1055,655,5,5,0.5)
-
-  randClick(1295,425,5,5,0.5) #초록물약
-  randClick(1305,740,5,5,0.5)
-  randClick(1030,705,5,5,0.5)
-  randClick(1055,655,5,5,2)
-
-  result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
-  if(result==0):
-    return 0, "아이템 삭제 실패"
+  x, y=1295, 575 
+  for i in range(2):
+    randClick(x,y,5,5,0.5) #충전석 상자
+    randClick(x,y,5,5,0.5) #더블클릭
+    box_x,box_y=img_search_utils.find_white_stone_center(780, 425, 400, 140)
+    if(box_x==0):
+      x+=75
+      continue
+    randClick(box_x,box_y,10,10,0.5)  #충전석 클릭
+    result=img_search_utils.searchImg('max_click.png', beforeDelay=0, afterDelay=0.5, _region=(895,525,300,200))
+    # if(result==0):
+    #   return 0, "max클릭 실패"
+    result=img_search_utils.searchImg('box_confirm.png', beforeDelay=0, afterDelay=0.5, _region=(910,645,320,200))
+    # if(result==0):
+    #   return 0, "보상확정 실패"
+    x+=75
   
+  for i in range(2):
+    randClick(x,y,5,5,0.5) #희귀조각 상자
+    randClick(x,y,5,5,0.5) #더블클릭
+    result=img_search_utils.searchImg('make_blue.png', beforeDelay=0, afterDelay=0.5, _region=(780,425, 400, 140))
+    if(result==0):
+      # if (i==1):
+      #   return 0, "보상확정 실패"
+      x+=75
+      continue
+    result=img_search_utils.searchImg('max_click.png', beforeDelay=0, afterDelay=0.5, _region=(895,525,300,200))
+    # if(result==0):
+    #   return 0, "max클릭 실패"
+    result=img_search_utils.searchImg('box_confirm.png', beforeDelay=0, afterDelay=0.5, _region=(910,645,320,200))
+    # if(result==0):
+    #   return 0, "보상확정 실패"
+    x+=75
+
   return 1, "message:None"
