@@ -330,8 +330,6 @@ def useItem(sio, data,btn_name, character_name, handle):
 
   randClick(1305,680,5,5,1) #모두 선택
   result=img_search_utils.searchImg('gift_1.png', beforeDelay=0, afterDelay=1, _region=(1200,270,400,300))
-  if(result==0):
-    return 0, "선물 해제 실패"
   randClick(1405,740,5,5,10) 
 
   return 1, "message:None"
