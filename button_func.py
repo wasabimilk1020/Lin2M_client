@@ -181,6 +181,25 @@ def dungeon(sio, data, btn_name, character_name, handle):
       
     result_3=img_search_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
 
+  if btn_name=="축복의땅":
+    for i in range(charging):
+      keyboard("2")
+      time.sleep(2)
+
+    keyboard("`") #던전
+    # result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
+
+    result=img_search_utils.searchImg('chukbok.png',beforeDelay=1, afterDelay=1)
+    if(result==0):
+      return 0, "축복의땅 클릭 실패"
+
+    result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
+    if(result==0):
+      return 0, "축복의땅 클릭 실패"
+    randClick(coord[0],coord[1],coord[2],coord[3],2)  #층 클릭
+
+    keyboard('6') #순간이동
+
   elif btn_name=="이벤트던전":
     print(f"{btn_name} 실행") #임시
 
@@ -194,8 +213,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
-    # randClick(coord[0],coord[1],coord[2],coord[3],1)  #층 클릭 (설정 해줘야함 json에서)
-    randClick(1050,650,5,5,0)
+    randClick(coord[0],coord[1],coord[2],coord[3],1)  
 
     keyboard('6') #순간이동
   

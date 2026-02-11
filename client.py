@@ -126,6 +126,7 @@ button_mapping={
   "크루마탑":button_func.dungeon,
   "안타라스":button_func.dungeon,
   "상아탑":button_func.dungeon,
+  "축복의땅":button_func.dungeon,
   "이벤트던전":button_func.dungeon,
   "모닝":button_func.morning,
   "우편":button_func.postBox,
