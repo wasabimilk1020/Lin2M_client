@@ -205,7 +205,10 @@ def dungeon(sio, data, btn_name, character_name, handle):
 
     keyboard("`") #던전
     # result=client_utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
-
+    dragValues={'fromStartX':680, 'toStartX':980,'fromStartY':650,'toStartY':750,'fromEndX':680, 'toEndX':980,'fromEndY':120,'toEndY':160}
+    serial_comm.mouseDrag(dragValues)
+    time.sleep(2)
+    
     result=img_search_utils.searchImg('eventDun.png',beforeDelay=1, afterDelay=1)
     if(result==0):
       return 0, "이벤트던전 클릭 실패"
