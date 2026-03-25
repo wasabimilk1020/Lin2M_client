@@ -622,7 +622,7 @@ def store(sio, data,btn_name, character_name, handle):
   # #품절 체크
   # result=img_search_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(600,660,750,200))
   # if(result==1):
-    return 0, "솔드아웃"
+  #   return 0, "솔드아웃"
   
   #일괄 구매
   result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
