@@ -1081,3 +1081,12 @@ def open_box(sio, data,btn_name, character_name, handle):
     x+=75
 
   return 1, "message:None"
+
+def tempClick(sio, data, btn_name, character_name, handle):
+  coord=data
+  cnt=data[4]
+  name=character_name
+  
+  randClick(1290,465,5,5,0)
+
+  return 1, "message:None"

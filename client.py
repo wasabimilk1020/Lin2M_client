@@ -167,6 +167,8 @@ button_mapping={
   "창정렬":button_func.move_window,
   "실행광고":button_func.gameExe_adRemove,
   "상자열기":button_func.open_box,
+  "임시":button_func.tempClick,
+  
 
  
 }
