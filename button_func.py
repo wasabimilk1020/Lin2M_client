@@ -1089,4 +1089,4 @@ def tempClick(sio, data, btn_name, character_name, handle):
   
   randClick(1290,465,5,5,0)
 
-  return 1, "message:None"
+  return 4, "message:None"

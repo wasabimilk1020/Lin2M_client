@@ -56,6 +56,8 @@ def mainLoop(sio, btn_func, func_data, id_handle, btn_name):
             sio.emit("get_diamond",data)
             #절전모드
             go_to_sleep_and_huntingChk(btn_name, character_name, sio)
+          elif result[0]==4:  #임시버튼용 빨리 클릭하기 위해서 나중에 없애자
+            pass
         except Exception as e:
           sio.emit("logEvent", [f"message result 에러: {e}", character_name, ERR_MSG])
           continue
