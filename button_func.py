@@ -570,10 +570,9 @@ def daily(sio, data,btn_name, character_name, handle):
     result=img_search_utils.searchImg('dailyRedDotChk.png', beforeDelay=0, afterDelay=0, justChk=True, chkCnt=2, _region=region) 
     if result:
       randClick(result.left-100, result.top+30,10,10,1)
-      result=img_search_utils.searchImg('accept.png', beforeDelay=1, afterDelay=1, _region=(1075,470,400,200)) 
+      result=img_search_utils.searchImg('accept.png', beforeDelay=1, afterDelay=1, _region=(1105,420,400,200)) 
       if(result==1):
         result=img_search_utils.searchImg('confirm.png', beforeDelay=1, afterDelay=0, _region=(920,580,300,200)) 
-   
     y += 80 #y축 80씩 증가
  
   #데일리 나가기
@@ -659,14 +658,14 @@ def morning(sio, data,btn_name, character_name, handle):
 
   # 데일리 
   daily(sio, data,btn_name, character_name, handle)
-  # 혈맹 
-  result_1=guild(sio, data,btn_name, character_name, handle)
-  if(result_1[0]==0):
-    return result_1[0], result_1[1]
-  #상점
-  result_2=store(sio, data,btn_name, character_name, handle)
-  if(result_2[0]==0):
-    return result_2[0], result_2[1]
+  # # 혈맹 
+  # result_1=guild(sio, data,btn_name, character_name, handle)
+  # if(result_1[0]==0):
+  #   return result_1[0], result_1[1]
+  # #상점
+  # result_2=store(sio, data,btn_name, character_name, handle)
+  # if(result_2[0]==0):
+  #   return result_2[0], result_2[1]
 
   img_search_utils.caputure_image(name, 387,258, sio) #name, x, y, sio
 
