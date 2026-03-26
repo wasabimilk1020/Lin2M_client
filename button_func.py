@@ -208,14 +208,14 @@ def dungeon(sio, data, btn_name, character_name, handle):
 
     keyboard("`") #던전
     
-    result=img_search_utils.searchImg('eventDun.png',beforeDelay=1, afterDelay=1)
+    result=img_search_utils.searchImg('eventDun.png',beforeDelay=0.5, afterDelay=0)
     if(result==0):
       return 0, "이벤트던전 클릭 실패"
 
-    result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기
+    result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=0.5, _region=(1200, 750, 400, 150))  #입장하기
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],1)  
+    randClick(coord[0],coord[1],coord[2],coord[3],0)  
 
     # keyboard('6') #순간이동
     
