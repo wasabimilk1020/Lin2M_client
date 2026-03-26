@@ -28,6 +28,8 @@ def mainLoop(sio, btn_func, func_data, id_handle, btn_name):
         #절전해제 및 사망체크
         if btn_name=="파티초대":
           chk_result=waking_from_sleep_and_deathChk(btn_name, 0)  #두 번째 인자 time.sleep
+        elif btn_name=="임시":  #이벤트 던전 빨리해야되는것 때문에 함 나중에 없애자
+          chk_result=0
         else:
           chk_result=waking_from_sleep_and_deathChk(btn_name, 2)  #두 번째 인자 time.sleep
         
