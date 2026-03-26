@@ -658,14 +658,14 @@ def morning(sio, data,btn_name, character_name, handle):
 
   # 데일리 
   daily(sio, data,btn_name, character_name, handle)
-  # # 혈맹 
-  # result_1=guild(sio, data,btn_name, character_name, handle)
-  # if(result_1[0]==0):
-  #   return result_1[0], result_1[1]
-  # #상점
-  # result_2=store(sio, data,btn_name, character_name, handle)
-  # if(result_2[0]==0):
-  #   return result_2[0], result_2[1]
+  # 혈맹 
+  result_1=guild(sio, data,btn_name, character_name, handle)
+  if(result_1[0]==0):
+    return result_1[0], result_1[1]
+  #상점
+  result_2=store(sio, data,btn_name, character_name, handle)
+  if(result_2[0]==0):
+    return result_2[0], result_2[1]
 
   img_search_utils.caputure_image(name, 387,258, sio) #name, x, y, sio
 
