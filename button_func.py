@@ -50,8 +50,11 @@ def normalHunting(sio, data,btn_name, character_name, handle):
 
   result_coord=img_search_utils.searchImg('plus.png',beforeDelay=0, afterDelay=0, justChk=True, _region=(1450,340,200,100)) #시간충전 좌표
  
-  for i in range(7):
-    randClick(result_coord[0],result_coord[1],0,0,0.3) #시간 충전
+  if result_coord != 0:
+    for i in range(7):
+        randClick(result_coord[0], result_coord[1], 0, 0, 0.3)
+  else:
+      return 0, "시간충전 좌표 못찾음"
 
   result_2=img_search_utils.searchImg('clk_schedule_start.png',beforeDelay=0, afterDelay=0, _region=(1260,790,300,100))
   if result_2==1: #마을 체크
@@ -1094,3 +1097,37 @@ def tempClick(sio, data, btn_name, character_name, handle):
 
 
   return 4, "message:None"
+
+def heal_off(sio, data, btn_name, character_name, handle):
+  coord=data
+  cnt=data[4]
+  name=character_name
+  
+  keyboard('k')
+
+  result=img_search_utils.searchImg('heal.png', beforeDelay=1, afterDelay=1, _region=(1270,290,300,500))
+  if(result==0):
+    escKey()
+    return 0, " 클릭 실패"
+  randClick(1505,735,5,5,1) #타임
+  randClick(1090,345,5,5,1) #off
+  escKey()
+
+  return 1, "message:None"
+
+def heal_on(sio, data, btn_name, character_name, handle):
+  coord=data
+  cnt=data[4]
+  name=character_name
+  
+  keyboard('k')
+
+  result=img_search_utils.searchImg('heal.png', beforeDelay=1, afterDelay=1, _region=(1270,290,300,500))
+  if(result==0):
+    escKey()
+    return 0, " 클릭 실패"
+  randClick(1505,735,5,5,1) #타임
+  randClick(960,345,5,5,1) #on
+  escKey()
+
+  return 1, "message:None"
