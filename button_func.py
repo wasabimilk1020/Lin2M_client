@@ -103,7 +103,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
     if(result==0):
       return 0, "격섬 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],2)  #층 클릭
+    randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     keyboard('6') #순간이동
 
@@ -123,7 +123,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, chkCnt=10, _region=(1200, 750, 400, 150))  #입장하기 
     if(result==0):
       return 0, "파괴성 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],2)  #층 클릭
+    randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     keyboard('6') #순간이동
 
@@ -202,7 +202,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],1)  
+    randClick(coord[0],coord[1],coord[2],coord[3],3)  
 
     keyboard('6') #순간이동
 
@@ -221,7 +221,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
     if(result==0):
       return 0, "운디네사원 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],2)  #층 클릭
+    randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     keyboard('6') #순간이동
 
