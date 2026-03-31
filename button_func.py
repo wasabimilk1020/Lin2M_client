@@ -106,7 +106,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
     if(result==0):
       return 0, f"{btn_name} 이동 실패"
 
@@ -131,7 +131,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
     if(result==0):
       return 0, f"{btn_name} 이동 실패"
   
@@ -215,7 +215,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     randClick(coord[0],coord[1],coord[2],coord[3],3)  
 
     #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
     if(result==0):
       return 0, f"{btn_name} 이동 실패"
 
@@ -239,7 +239,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
     #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
     if(result==0):
       return 0, f"{btn_name} 이동 실패"
   
