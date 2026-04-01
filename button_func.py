@@ -406,7 +406,7 @@ def agasion(sio, data,btn_name, character_name, handle):
   while True:
     randClick(1285,650,5,5,0.5) #첫 번째 카드 클릭
     randClick(1285,650,5,5,0)
-    result=img_search_utils.searchImg('agasionFirstChk.png', beforeDelay=1, afterDelay=1, justChk=True, _region=(800,750,300,200))
+    result=img_search_utils.searchImg('agasionFirstChk.png', beforeDelay=1, afterDelay=0, justChk=True, _region=(800,750,300,200))
     if(result==0):
       break
     for j in range(30):
@@ -469,7 +469,7 @@ def itemDelete(sio, data,btn_name, character_name, handle):
   # randClick(1030,705,5,5,0.5)
   # randClick(1055,655,5,5,2)
 
-  result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=1, justChk=True, chkCnt=10,_region=(910,180,230,70))
+  result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=0, justChk=True, chkCnt=10,_region=(910,180,230,70))
   if(result==0):
     return 0, "아이템 삭제 실패"
   
@@ -501,7 +501,7 @@ def paper(sio, data,btn_name, character_name, handle):
     randClick(1050,825,5,5,0.5) #max클릭
     randClick(1450,825,10,10,1) #제작클릭
 
-    result=img_search_utils.searchImg('createCancel.png', beforeDelay=1, afterDelay=1, justChk=True, _region=(1340,765,300,200))
+    result=img_search_utils.searchImg('createCancel.png', beforeDelay=1, afterDelay=0, justChk=True, _region=(1340,765,300,200))
     if(result==0):
       break
     time.sleep(3)

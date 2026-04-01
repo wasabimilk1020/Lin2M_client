@@ -35,10 +35,11 @@ def searchImg(imgTitle, beforeDelay, afterDelay, justChk=False, coord=[], chkCnt
       if coord:  # 이미지가 아닌 다른 곳 클릭 시
         randClick(coord[0], coord[1], coord[2], coord[3], 0)
       elif justChk:  # 클릭 없이 이미지 체크만 할 경우
+        time.sleep(afterDelay)
         return result
       else:  # 이미지 클릭
         randClick(result[0], result[1], result[2], result[3], 0)
-
+      
       time.sleep(afterDelay)
       return 1
     except pyautogui.ImageNotFoundException:  #이미지 찾기 실패
