@@ -762,7 +762,7 @@ def make_item(sio, data, btn_name, character_name, handle):
   
   result=img_search_utils.searchImg('white_confirm.png', beforeDelay=0, afterDelay=1, chkCnt=10, _region=(830,735,250,200))
   if(result==0):
-    return 0, "제작 클릭 실패"
+    return 0, "확인 클릭 실패"
   
   escKey()  #나가기
 
@@ -1122,16 +1122,53 @@ def open_box(sio, data,btn_name, character_name, handle):
 
   return 1, "message:None"
 
-def tempClick(sio, data, btn_name, character_name, handle):
+def petGaho(sio, data, btn_name, character_name, handle):
   coord=data
   cnt=data[4]
   name=character_name
   
-  randClick(1290,465,5,5,0.5)
-  randClick(1290,465,5,5,0)
+  keyboard('-')
+  result=img_search_utils.searchImg('gita.png', beforeDelay=0, afterDelay=1, _region=(480,230,1000,150))
+  if(result==0):
+    return 0, "기타 클릭 실패"
+  
+  result=img_search_utils.searchImg('somopum.png', beforeDelay=0, afterDelay=1, _region=(320,267,150,600))
+  if(result==0):
+    return 0, "소모품 클릭 실패"
+  
+  result=img_search_utils.searchImg('pet.png', beforeDelay=0, afterDelay=1, _region=(440,290,150,600))
+  if(result==0):
+    return 0, " 펫 클릭 실패"
+  
+  randClick(615,425,10,10,0.5) #펫의 가호 기초단련
+  for i in range(9):
+    randClick(1260,825,5,5,0.5)
 
+  result=img_search_utils.searchImg('make.png', beforeDelay=0, afterDelay=6,_region=(1315,745,250,200))
+  if(result==0):
+    return 0, "제작 클릭 실패"
+  randClick(940,825,10,10,2)  #건너뛰기
 
-  return 4, "message:None"
+  result=img_search_utils.searchImg('white_confirm.png', beforeDelay=0, afterDelay=1, chkCnt=10, _region=(830,735,250,200))
+  if(result==0):
+    return 0, "확인 클릭 실패"
+  
+  randClick(615,505,10,10,0.5) #펫의 가호 공격
+  for i in range(19):
+    randClick(1260,825,5,5,0.5)
+
+  result=img_search_utils.searchImg('make.png', beforeDelay=0, afterDelay=6,_region=(1315,745,250,200))
+  if(result==0):
+    return 0, "제작 클릭 실패"
+  randClick(940,825,10,10,2)  #건너뛰기
+  
+  result=img_search_utils.searchImg('white_confirm.png', beforeDelay=0, afterDelay=1, chkCnt=10, _region=(830,735,250,200))
+  if(result==0):
+    return 0, "확인 클릭 실패"
+  
+  escKey()
+
+  return 1, "message:None"
 
 def heal_off(sio, data, btn_name, character_name, handle):
   coord=data

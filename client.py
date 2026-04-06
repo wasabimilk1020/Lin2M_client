@@ -170,7 +170,7 @@ button_mapping={
   "상자열기":button_func.open_box,
   "힐OFF":button_func.heal_off,
   "힐ON":button_func.heal_on,
-  "임시":button_func.tempClick,
+  "펫가호":button_func.petGaho,
 
  
 }
