@@ -786,7 +786,7 @@ def unparty(sio, data,btn_name, character_name, handle):
   name=character_name
 
   randClick(865,480,30,30,0.5)  #전리품 확인 클릭
-  randClick(567,345,5,5,0.5)  #미니맵으로 전환 클릭
+  randClick(568,345,3,3,1)  #미니맵으로 전환 클릭
 
   result=img_search_utils.searchImg('unparty.png',beforeDelay=0.5, afterDelay=0.5, _region=(485, 365, 150, 150))
   if(result==0):
