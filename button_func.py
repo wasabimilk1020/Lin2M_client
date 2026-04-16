@@ -787,14 +787,12 @@ def unparty(sio, data,btn_name, character_name, handle):
 
   randClick(865,480,30,30,0.5)  #전리품 확인 클릭
 
-  y=560
-  keyboard("t") #파티
-  for i in range(4):
-    randClick(970,y,5,5,0)
-    result=img_search_utils.searchImg('unparty.png',beforeDelay=0.5, afterDelay=0.5, _region=(980, 480, 300, 400))
-    if(result==1):
-      break
-    y=y+60
+  result=img_search_utils.searchImg('unparty.png',beforeDelay=0.5, afterDelay=0.5, _region=(485, 365, 150, 150))
+  if(result==0):
+    return 0, "파티해제 실패"
+  result=img_search_utils.searchImg('confirm.png',beforeDelay=0.5, afterDelay=0.5, _region=(880, 570, 320, 200))
+  if(result==0):
+    return 0, "확인 실패"
 
   result=normalHunting(sio, data, btn_name, character_name, handle)
   return result
