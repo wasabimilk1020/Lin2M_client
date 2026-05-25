@@ -637,6 +637,8 @@ def guild(sio, data,btn_name, character_name, handle):
   if(result==0):
     return 0, "일괄기부 실패"
   
+  img_search_utils.searchImg('confirm.png',beforeDelay=1, afterDelay=1, accuracy=0.9, _region=(920,580,300,200))
+  
   escKey()  #기부 나가기
   escKey()  #혈맹 나가기
 
