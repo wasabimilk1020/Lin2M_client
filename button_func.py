@@ -254,11 +254,16 @@ def dungeon(sio, data, btn_name, character_name, handle):
     if(result==0):
       return 0, "이벤트던전 클릭 실패"
 
-    result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=0.5, _region=(1200, 750, 400, 150))  #입장하기
+    result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],0)  
+    randClick(coord[0],coord[1],coord[2],coord[3],3)  
 
+    #이동 완료 체크
+    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    if(result==0):
+      return 0, f"{btn_name} 이동 실패"
+    
     keyboard('6') #순간이동
     
     # return 4, "message:None"  #절전모드로 진입하지 않고 진행 
