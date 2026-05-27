@@ -259,9 +259,9 @@ def dungeon(sio, data, btn_name, character_name, handle):
       return 0, "이벤트 입장 클릭 실패"
     randClick(coord[0],coord[1],coord[2],coord[3],0)  
 
-    # keyboard('6') #순간이동
+    keyboard('6') #순간이동
     
-    return 4, "message:None"  #임시방편 원래대로 돌려놓아야함
+    # return 4, "message:None"  #절전모드로 진입하지 않고 진행 
   
 
   img_search_utils.caputure_image(name, 387, 258, sio) #name, x, y, sio
