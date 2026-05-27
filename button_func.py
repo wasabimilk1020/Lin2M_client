@@ -94,7 +94,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
       time.sleep(2)
 
     keyboard("`") #던전
-    # result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
+    result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
 
     result=img_search_utils.searchImg('dungeonG.png',beforeDelay=1, afterDelay=1)
     if(result==0):
