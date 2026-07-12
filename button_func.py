@@ -390,7 +390,7 @@ def useItem(sio, data,btn_name, character_name, handle):
   name=character_name
 
   x, y, width, height = 1270,330, 100, 100 #매칭 위치
-  match_list=["test_img.png"]
+  match_list=["gift_1.png"]
   
   keyboard('i') #인벤토리
   time.sleep(1)
