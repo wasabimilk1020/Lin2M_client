@@ -214,7 +214,7 @@ def img_matchTemplate(temp_img_list, x, y, width, height, confidence=0.6):
 
       if max_val >= confidence: #매칭 성공
         # print(max_val)
-        return title, "capture_text 성공"
+        return title, "capture_text 성공", max_val, max_loc
     return 0, max_val
 
 def find_white_stone_center(x, y, width, height, min_area=300):

@@ -388,6 +388,9 @@ def useItem(sio, data,btn_name, character_name, handle):
   coord=data
   delay=data[4]
   name=character_name
+
+  x, y, width, height = 1270,330, 100, 100 #매칭 위치
+  match_list=["test_img.png"]
   
   keyboard('i') #인벤토리
   time.sleep(1)
@@ -395,7 +398,16 @@ def useItem(sio, data,btn_name, character_name, handle):
   randClick(1450,520,10,5,0.5)  #일괄사용 클릭
 
   randClick(1305,680,5,5,1) #모두 선택
-  result=img_search_utils.searchImg('gift_1.png', beforeDelay=0, afterDelay=1, _region=(1200,270,400,300))
+  # result=img_search_utils.searchImg('gift_1.png', beforeDelay=0, afterDelay=1, _region=(1200,270,400,300))
+  match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height)
+  if match_result[0] == 0:
+    print("매칭 실패")
+  elif match_result[0] == 2:
+    print("템플릿 매칭오류")
+  else:
+    click_x = x + match_result[3][0]
+    click_y = y + match_result[3][1]
+    randClick(click_x,click_y,5,5,0.5) 
   randClick(1405,740,5,5,10) 
 
   return 1, "message:None"
