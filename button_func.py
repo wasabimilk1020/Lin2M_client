@@ -544,9 +544,11 @@ def event_store(sio, data,btn_name, character_name, handle):
   result=img_search_utils.searchImg('dailyProduct.png', beforeDelay=1, afterDelay=1, chkCnt=30)  
   if(result==0):
     return 0, "일일상품담기 실패"
+
+  randClick(800,580,10,10,0.5)  #임시 지워야함
   
-  # for i in range(8):
-  #   randClick(490,465,10,10,0)
+  # for i in range(2):
+  #   randClick(475,380,10,10,0.5)
 
   randClick(1475,830,5,5,0.5) #구매 결정
   randClick(1050,650,5,5,0.5) 
