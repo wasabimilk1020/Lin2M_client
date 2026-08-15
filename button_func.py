@@ -1022,7 +1022,7 @@ def re_exchange(sio, data, btn_name, character_name, handle):
   randClick(1447,833,10,10,0) #선택 재등록
   result=img_search_utils.searchImg('confirm.png',beforeDelay=0, afterDelay=1, _region=(920,580,300,200))
   if(result==1):
-    time.sleep(20)
+    time.sleep(30)
     
   escKey()  #나가기
 
