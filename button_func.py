@@ -260,12 +260,12 @@ def dungeon(sio, data, btn_name, character_name, handle):
     randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
 
-    #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
-    if(result==0):
-      return 0, f"{btn_name} 이동 실패"
+    # #이동 완료 체크
+    # result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    # if(result==0):
+    #   return 0, f"{btn_name} 이동 실패"
   
-    keyboard('6') #순간이동
+    # keyboard('6') #순간이동
     
     # return 4, "message:None"  #절전모드로 진입하지 않고 진행 
   
@@ -704,23 +704,6 @@ def store(sio, data,btn_name, character_name, handle):
   
     randClick(1045,780,10,10,5) #구매 클릭  #여기 시간을 3초, 5초 이런식으로 조절하고 싶은대 루틴마다 다르게
 
-
-  # #---레아의 성소 클릭
-  # result=img_search_utils.searchImg('leah_castle.png', beforeDelay=1, afterDelay=1, accuracy=0.9, _region=(1360,315,200,250)) 
-  # #일괄 구매
-  # result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
-  # if(result==0):
-  #   return 0, "일괄구매 실패"
-  
-  # randClick(1045,780,10,10,5) #구매 클릭
-  
-
-  # #---사제의 의뢰 시작
-  # randClick(1405, 544, 100, 10, 0.5)
-  # #일괄 구매
-  # randClick(1442, 850, 100, 10, 1)
-  # #구매
-  # randClick(1039, 771, 100, 10, 2.5)
 
   #상점 나가기
   escKey()
