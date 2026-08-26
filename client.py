@@ -74,7 +74,7 @@ def connect():
 @sio.event
 def disconnect():
   global last_pong_time
-  print("disconnet 호출! 서버와 연결 끊김")
+  print("disconncet 호출! 서버와 연결 끊김")
   last_pong_time = None #퐁 타임 초기화
   if serial_comm.ser is not None and serial_comm.ser.is_open:
     # serial_comm.ser.flushInput()

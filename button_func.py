@@ -684,21 +684,36 @@ def store(sio, data,btn_name, character_name, handle):
   # result=img_search_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(600,660,750,200))
   # if(result==1):
   #   return 0, "솔드아웃"
+
+  # #--2주년 기념 상품 임시 루틴
+  # #일괄 구매
+  # result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
+  # if(result==0):
+  #   return 0, "일괄구매 실패"
+
+  # randClick(1045,780,10,10,3) #구매 클릭
+  #--여기까지
+
+  pic_lists=["pandora.png","leah_castle.png"]
+  for pic in pic_lists:
+    result=img_search_utils.searchImg(pic, beforeDelay=1, afterDelay=1, accuracy=0.9, _region=(1360,315,200,250)) 
+    #일괄 구매
+    result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
+    if(result==0):
+      return 0, "일괄구매 실패"
   
-  #일괄 구매
-  result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
-  if(result==0):
-    return 0, "일괄구매 실패"
-
-  randClick(1045,780,10,10,3) #구매 클릭
+    randClick(1045,780,10,10,5) #구매 클릭  #여기 시간을 3초, 5초 이런식으로 조절하고 싶은대 루틴마다 다르게
 
 
-  #---레아의 성소 클릭
-  result=img_search_utils.searchImg('leah_castle.png', beforeDelay=1, afterDelay=1, accuracy=0.9, _region=(1360,370,200,100)) 
-  #일괄 구매
-  randClick(1442, 850, 100, 10, 0.5)
-  #구매
-  randClick(1039, 771, 100, 10, 5)
+  # #---레아의 성소 클릭
+  # result=img_search_utils.searchImg('leah_castle.png', beforeDelay=1, afterDelay=1, accuracy=0.9, _region=(1360,315,200,250)) 
+  # #일괄 구매
+  # result=img_search_utils.searchImg('allBuy.png', beforeDelay=0, afterDelay=1, _region=(1300,790,350,200))
+  # if(result==0):
+  #   return 0, "일괄구매 실패"
+  
+  # randClick(1045,780,10,10,5) #구매 클릭
+  
 
   # #---사제의 의뢰 시작
   # randClick(1405, 544, 100, 10, 0.5)
@@ -718,12 +733,12 @@ def morning(sio, data,btn_name, character_name, handle):
   delay=data[4]
   name=character_name
 
-  # 데일리 
-  daily(sio, data,btn_name, character_name, handle)
-  # 혈맹 
-  result_1=guild(sio, data,btn_name, character_name, handle)
-  if(result_1[0]==0):
-    return result_1[0], result_1[1]
+  # # 데일리 
+  # daily(sio, data,btn_name, character_name, handle)
+  # # 혈맹 
+  # result_1=guild(sio, data,btn_name, character_name, handle)
+  # if(result_1[0]==0):
+  #   return result_1[0], result_1[1]
   #상점
   result_2=store(sio, data,btn_name, character_name, handle)
   if(result_2[0]==0):
