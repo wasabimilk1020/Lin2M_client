@@ -62,7 +62,7 @@ def connect():
   global last_pong_time
   global character_list
   print('connection established')   
-  character_list=utils.load_json("character_list.json","config_json")
+  # character_list=get_account.get_account_list(sio) #윈도우를 돌면서 어카운트 정보를 얻음
   last_pong_time = time.time()  #서버가 다시 연결되었을 때 타이머 초기화 (이전 타이머 값이 남아있을 경우 방지)
 
   if serial_comm.ser is None or not serial_comm.ser.is_open:
@@ -81,41 +81,12 @@ def disconnect():
     # serial_comm.ser.flushOutput()
     serial_comm.close_serial()
 
-# @sio.event
-# def reqAccount(data):
-#   global character_list
-
-#   full_path=utils.file_path("character_list.json","character_list_json")  #file, folder, sub_folder
-#   def sort_key(text):
-#     # 첫 번째 공백을 기준으로 앞(서버)과 뒤(아이디)를 나눔
-#     server_part, id_part = text.split(" ", 1)  
-#     # 정규식을 사용해 서버 번호(숫자)를 추출: "(에덴10)" → "10"
-#     match = re.search(r'\d+', server_part)
-#     server_number = int(match.group()) if match else 0
-#     return (server_number, id_part)
-  
-#   accont_dict=get_account.get_account_list(sio)
-
-#   sorted_keys = sorted(accont_dict.keys(), key=sort_key)
-#   character_list = {key: accont_dict[key] for key in sorted_keys}
-
-#   with open(full_path, "w", encoding="utf-8") as f:
-#     json.dump(character_list, f, indent=4, ensure_ascii=False)
-#   sio.emit("revAccount", character_list)
-
 @sio.event
 def reqAccount(data):
-  global character_list
+  global character_list   
+  character_list=get_account.get_account_list(sio) #윈도우를 돌면서 어카운트 정보를 얻음
 
-  full_path=utils.file_path("character_list.json","config_json")  #file, folder, sub_folder 
-  
-  account_dict=get_account.get_account_list(sio) #윈도우를 돌면서 어카운트 정보를 얻음
-
-  with open(full_path, "w", encoding="utf-8") as f: #account_dict의 내용을 json에 쓰기
-    json.dump(account_dict, f, indent=4, ensure_ascii=False)
-
-  character_list=utils.load_json("character_list.json","config_json") #새로운 account정보가 json에 써졌으므로 다시 load
-  sio.emit("revAccount", account_dict)
+  sio.emit("revAccount", character_list)
 
 #이렇게 일일이 버튼을 맵핑시켜주는게 아니라 버튼 생성하면 저절로 처리되도록 만들고 싶은데...
 button_mapping={
