@@ -419,11 +419,11 @@ def agasion(sio, data,btn_name, character_name, handle):
 
   keyboard("i")
   time.sleep(1)
-  randClick(1220,460,5,5,1) #왼쪽 메뉴 클릭
+  randClick(925,460,5,5,1) #왼쪽 메뉴 클릭
 
   while True:
-    randClick(1285,650,5,5,0.5) #첫 번째 카드 클릭
-    randClick(1285,650,5,5,0)
+    randClick(1000,555,5,5,0.5) #첫 번째 카드 클릭
+    randClick(1000,555,5,5,0)
     result=img_search_utils.searchImg('agasionFirstChk.png', beforeDelay=1, afterDelay=0, justChk=True, _region=(800,750,300,200))
     if(result==0):
       break
@@ -449,43 +449,18 @@ def itemDelete(sio, data,btn_name, character_name, handle):
 
   keyboard("i")
   time.sleep(1)
-  randClick(1225,405,5,5,1)
+  randClick(930,405,5,5,1)
 
-  #1295,355
-  x,y=1295, 355 #초기 x,y좌표
-  for i in range(2):
-    for j in range(4):
-      randClick(x,y,5,5,0.5) #아이템클릭
-      randClick(1305,740,5,5,0.5)
-      result=img_search_utils.searchImg('item_delete_confirm.png', beforeDelay=0, afterDelay=0.5, _region=(875,585,400,200))
-      if(result==0):
-        randClick(1055,655,5,5,0.5)
-        # return 0, "아이템삭제 실패"
+  x,y=1000, 400 #초기 x,y좌표
+  for i in range(8):
+    randClick(x,y,5,5,0.5) #아이템클릭
+    randClick(1305,740,5,5,0.5)
+    result=img_search_utils.searchImg('item_delete_confirm.png', beforeDelay=0, afterDelay=0.5, _region=(875,585,400,200))
+    if(result==0):
       randClick(1055,655,5,5,0.5)
-      x+=75
-    x=1295 #x좌표 초기화
-    y+=100
-
-  # randClick(1295,355,5,5,0.5) #물약
-  # randClick(1305,740,5,5,0.5)
-
-  # randClick(1030,705,5,5,0.5)
-  # randClick(1055,655,5,5,2)
-
-  # randClick(1365,355,5,5,0.5) #순간이동
-  # randClick(1305,740,5,5,0.5)
-  # randClick(1030,705,5,5,0.5)
-  # randClick(1055,655,5,5,0.5)
-
-  # randClick(1295,425,5,5,0.5) #초록물약
-  # randClick(1305,740,5,5,0.5)
-  # randClick(1030,705,5,5,0.5)
-  # randClick(1055,655,5,5,2)
-
-  # randClick(1365,425,5,5,0.5) #마나물약
-  # randClick(1305,740,5,5,0.5)
-  # randClick(1030,705,5,5,0.5)
-  # randClick(1055,655,5,5,2)
+      # return 0, "아이템삭제 실패"
+    randClick(1055,655,5,5,0.5)
+    x+=75
 
   result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=0, justChk=True, chkCnt=10,_region=(910,180,230,70))
   if(result==0):
@@ -501,7 +476,7 @@ def paper(sio, data,btn_name, character_name, handle):
   keyboard("i")
   time.sleep(1)
   randClick(1225,405,10,10,1)
-  randClick(1285,495,10,10,0.5)
+  randClick(1285,545,10,10,0.5)
   randClick(1373,737,5,5,0.5)
   result=img_search_utils.searchImg('paper_make.png', beforeDelay=1, afterDelay=1, _region=(1255,488,200,100))
   if(result==0):
