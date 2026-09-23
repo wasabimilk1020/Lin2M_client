@@ -257,7 +257,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
+    # randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
 
 
     # #이동 완료 체크
