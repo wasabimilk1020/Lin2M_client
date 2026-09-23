@@ -475,8 +475,8 @@ def paper(sio, data,btn_name, character_name, handle):
   
   keyboard("i")
   time.sleep(1)
-  randClick(1225,405,10,10,1)
-  randClick(1285,545,10,10,0.5)
+  randClick(925,405,5,5,1) #왼쪽 메뉴 클릭
+  randClick(1000,475,10,10,0.5)
   randClick(1373,737,5,5,0.5)
   result=img_search_utils.searchImg('paper_make.png', beforeDelay=1, afterDelay=1, _region=(1255,488,200,100))
   if(result==0):
@@ -1078,9 +1078,9 @@ def open_box(sio, data,btn_name, character_name, handle):
 
   keyboard("i")
   time.sleep(1)
-  randClick(1225,405,5,5,1)
+  randClick(930,405,5,5,1)
 
-  x, y=1295, 575 
+  x, y=1290, 475 
   for i in range(2):
     randClick(x,y,5,5,0.5) #충전석 상자
     randClick(x,y,5,5,0.5) #더블클릭
