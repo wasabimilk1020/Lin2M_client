@@ -258,6 +258,7 @@ def dungeon(sio, data, btn_name, character_name, handle):
     if(result==0):
       return 0, "이벤트 입장 클릭 실패"
     # randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
+    randClick(1045,655,10,10,0) #클릭 확인
 
 
     # #이동 완료 체크
