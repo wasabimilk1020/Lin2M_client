@@ -5,8 +5,10 @@ from button_func import *
 import win32gui
 from PIL import ImageGrab,ImageEnhance,Image,ImageOps,ImageFilter
 
-result=img_search_utils.searchImg('game_start_2.png',beforeDelay=2, afterDelay=0,chkCnt=True, _region=(0,0,1920,1080))
-print(result)
+x, y, width, height = 1270,330, 300, 300 #매칭 위치
+match_list=["gift_1.png"]
+match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height)
+print("match_result",match_result)
 
 
 
