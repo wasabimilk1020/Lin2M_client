@@ -7,7 +7,7 @@ from PIL import ImageGrab,ImageEnhance,Image,ImageOps,ImageFilter
 
 x, y, width, height = 1270,330, 300, 300 #매칭 위치
 match_list=["gift_1.png"]
-match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height)
+match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height,confidence=0.8)
 print("match_result",match_result)
 
 

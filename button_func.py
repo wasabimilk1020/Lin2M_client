@@ -411,7 +411,7 @@ def useItem(sio, data,btn_name, character_name, handle):
 
   randClick(1305,680,5,5,1) #모두 선택
   # result=img_search_utils.searchImg('gift_1.png', beforeDelay=0, afterDelay=1, _region=(1200,270,400,300))
-  match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height)
+  match_result=img_search_utils.img_matchTemplate(match_list, x, y, width, height, confidence=0.8)
   if match_result[0] == 0:
     print("매칭 실패")
   elif match_result[0] == 2:
