@@ -222,28 +222,39 @@ def dungeon(sio, data, btn_name, character_name, handle):
     keyboard('6') #순간이동
 
   elif btn_name=="운디네사원":
-    for i in range(charging):
-      keyboard("2")
-      time.sleep(2)
+    # for i in range(charging):
+    #   keyboard("2")
+    #   time.sleep(2)
 
+    # keyboard("`") #던전
+    # # result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
+
+    # result=img_search_utils.searchImg('undine.png',beforeDelay=1, afterDelay=1)
+    # if(result==0):
+    #   return 0, "운디네사원 클릭 실패"
+
+    # result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
+    # if(result==0):
+    #   return 0, "운디네사원 입장 클릭 실패"
+    # randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
+
+    # #이동 완료 체크
+    # result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
+    # if(result==0):
+    #   return 0, f"{btn_name} 이동 실패"
+  
+    # keyboard('6') #순간이동
     keyboard("`") #던전
-    # result=utils.searchImg('favorite.png', beforeDelay=1, afterDelay=1,  _region=(700, 230, 800, 120))  #즐겨찾기 클릭
-
-    result=img_search_utils.searchImg('undine.png',beforeDelay=1, afterDelay=1)
+        
+    result=img_search_utils.searchImg('eventDun_2.png',beforeDelay=0.5, afterDelay=0)
     if(result==0):
-      return 0, "운디네사원 클릭 실패"
+      return 0, "이벤트던전 클릭 실패"
 
     result=img_search_utils.searchImg('dungeon_enter.png', beforeDelay=0, afterDelay=1, _region=(1200, 750, 400, 150))  #입장하기 
     if(result==0):
-      return 0, "운디네사원 입장 클릭 실패"
-    randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
-
-    #이동 완료 체크
-    result=img_search_utils.searchImg('chk.png', beforeDelay=1, afterDelay=2.5, justChk=True, chkCnt=10,_region=(910,180,230,70))
-    if(result==0):
-      return 0, f"{btn_name} 이동 실패"
-  
-    keyboard('6') #순간이동
+      return 0, "이벤트 입장 클릭 실패"
+    # randClick(coord[0],coord[1],coord[2],coord[3],3)  #층 클릭
+    randClick(1045,655,10,10,0) #클릭 확인
 
   elif btn_name=="이벤트던전":
     print(f"{btn_name} 실행") #임시
@@ -520,8 +531,6 @@ def event_store(sio, data,btn_name, character_name, handle):
   result=img_search_utils.searchImg('dailyProduct.png', beforeDelay=1, afterDelay=1, chkCnt=30)  
   if(result==0):
     return 0, "일일상품담기 실패"
-
-  randClick(800,580,10,10,0.5)  #임시 지워야함
   
   # for i in range(2):
   #   randClick(475,380,10,10,0.5)
