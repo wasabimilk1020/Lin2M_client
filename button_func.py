@@ -438,7 +438,9 @@ def agasion(sio, data,btn_name, character_name, handle):
     randClick(1000,555,5,5,0)
     result=img_search_utils.searchImg('agasionFirstChk.png', beforeDelay=1, afterDelay=0, justChk=True, _region=(800,750,300,200))
     if(result==0):
-      break
+      result=img_search_utils.searchImg('direct_result.png', beforeDelay=1, afterDelay=0, justChk=True, _region=(800,750,300,200))
+      if(result==0):
+        break
     for j in range(30):
       keyboard("y")
       time.sleep(1)
