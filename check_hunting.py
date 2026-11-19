@@ -2,7 +2,7 @@ import img_search_utils
 import time
 import re
 
-x, y, width, height = 805,670, 310, 50 #매칭 위치
+x, y, width, height = 750,620, 450, 150 #매칭 위치
 
 match_list=["auto_hunting.png", "auto_organize.png", "auto_schedule.png"]
 def checkHunting():
