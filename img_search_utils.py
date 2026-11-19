@@ -167,7 +167,7 @@ def preprocess_image(temp_imgTitle, output_path):  #이미지 전처리
   # 저장
   cv2.imwrite(output_path, sharpened)
 
-def img_matchTemplate(temp_img_list, x, y, width, height, confidence=0.6):
+def img_matchTemplate(temp_img_list, x, y, width, height, confidence=0.75):
     # ---------- 타겟 캡처 ----------
     bbox = (x, y, x + width, y + height)
     target_pil = ImageGrab.grab(bbox)

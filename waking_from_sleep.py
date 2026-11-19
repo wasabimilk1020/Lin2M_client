@@ -3,6 +3,8 @@ import serial_comm
 import time
 
 def waking_from_sleep_and_deathChk(btn_name, sleep_time):
+  #이 아래 코드 "파티초대"와 "자동사냥"이라는 버튼이름이 없는대 사망체크 루틴은 절대로 안일어나는 거였네?
+  #전에 이것저것 수정하다가 이것을 수정하지 않은듯??
   if btn_name not in ["파티초대", "자동사냥"]:
     result=img_search_utils.searchImg('deathChk.png',beforeDelay=0, afterDelay=0, chkCnt=2, _region=(735,590,450,200))  #사망체크 "사망하였습니다"
   else:
