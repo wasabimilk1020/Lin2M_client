@@ -243,3 +243,5 @@ sio.connect(f"{server_url}?computer_id={computer_id}")
 sio.wait()
 
 
+#아이템분해 루틴을 먼저 해줘야 스테이터스가 잘 돌아감
+#길드랑 상점 루틴
