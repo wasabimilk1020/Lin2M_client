@@ -667,10 +667,10 @@ def store(sio, data,btn_name, character_name, handle):
     escKey()
     return 0, "교환소 클릭 실패"
   
-  #품절 체크
-  result=img_search_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(600,660,750,200))
-  if(result==1):
-    return 0, "솔드아웃"
+  # #품절 체크
+  # result=img_search_utils.searchImg('soldoutChk.png', beforeDelay=0, afterDelay=0, chkCnt=3, _region=(600,660,750,200))
+  # if(result==1):
+  #   return 0, "솔드아웃"
 
   # #--2주년 기념 상품 임시 루틴
   # #일괄 구매
@@ -703,12 +703,12 @@ def morning(sio, data,btn_name, character_name, handle):
   delay=data[4]
   name=character_name
 
-  # 데일리 
-  daily(sio, data,btn_name, character_name, handle)
-  # 혈맹 
-  result_1=guild(sio, data,btn_name, character_name, handle)
-  if(result_1[0]==0):
-    return result_1[0], result_1[1]
+  # # 데일리 
+  # daily(sio, data,btn_name, character_name, handle)
+  # # 혈맹 
+  # result_1=guild(sio, data,btn_name, character_name, handle)
+  # if(result_1[0]==0):
+  #   return result_1[0], result_1[1]
   #상점
   result_2=store(sio, data,btn_name, character_name, handle)
   if(result_2[0]==0):
