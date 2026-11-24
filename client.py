@@ -20,7 +20,6 @@ import computer_restart
 import game_exe
 import img_search_utils
 import utils
-import connect_request
 import re
 import code_update
 
