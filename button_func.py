@@ -308,10 +308,21 @@ def switch_get_item(sio, data, btn_name, character_name, handle):
     img_search_utils.caputure_image(name, 1295, 400, sio) #name, x, y, sio
 
   elif btn_name=="고급":
-    result=img_search_utils.searchImg('greenItem.png', beforeDelay=1, afterDelay=1, _region=(1015,400,200,150))
+    time.sleep(3)
+
+    randClick(440,425,10,10,1)
+
+    dragValues={'fromStartX':900, 'toStartX':1015,'fromStartY':590,'toStartY':620,'fromEndX':860, 'toEndX':1000,'fromEndY':325,'toEndY':345}
+    serial_comm.mouseDrag(dragValues)
+
+    time.sleep(2)
+
+    result=img_search_utils.searchImg('greenItem.png', beforeDelay=1, afterDelay=1, _region=(1000,490,600,400))
     if(result==0):
       return 0, "고급 클릭 실패"
     
+    
+
     img_search_utils.caputure_image(name, 1120, 450, sio) #name, x, y, sio
 
   elif btn_name=="희귀":
@@ -1011,7 +1022,7 @@ def re_exchange(sio, data, btn_name, character_name, handle):
   randClick(1447,833,10,10,0) #선택 재등록
   result=img_search_utils.searchImg('confirm.png',beforeDelay=0, afterDelay=1, _region=(920,580,300,200))
   if(result==1):
-    time.sleep(40)
+    time.sleep(50)
     
   escKey()  #나가기
 
