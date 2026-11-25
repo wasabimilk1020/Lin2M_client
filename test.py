@@ -12,5 +12,7 @@ import serial_comm
 # print("match_result",match_result)
 
 
-time.sleep(2)
-serial_comm.startClick(656,405,0,0,0)
+# time.sleep(2)
+# serial_comm.startClick(656,405,0,0,0)
+result=img_search_utils.searchImg('confirm.png',beforeDelay=2, afterDelay=1, justChk=True, _region=(920,580,300,200))
+print(result)

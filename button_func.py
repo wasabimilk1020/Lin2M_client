@@ -34,9 +34,12 @@ def normalHunting(sio, data,btn_name, character_name, handle):
 
   if flag==1:
     keyboard('7')
-    result_1=img_search_utils.searchImg('eventObj.png',beforeDelay=2, afterDelay=10, _region=(333,245,230,300)) 
-    #여기에 클릭 후 확인이라던지 있는지 없는지 확인 하고 더 만들어줘야함함
-
+    result=img_search_utils.searchImg('eventObj.png',beforeDelay=2, afterDelay=10, _region=(333,245,230,300)) 
+    if result==0:
+      return 0, "동상 클릭 실패"
+    else:
+      img_search_utils.searchImg('confirm.png',beforeDelay=2, afterDelay=1, _region=(920,580,300,200))
+      
   keyboard('v')
 
   img_search_utils.searchImg('stop_schedule.png',beforeDelay=0, afterDelay=0, chkCnt=2, _region=(1260,790,300,100))
@@ -526,19 +529,20 @@ def event_store(sio, data,btn_name, character_name, handle):
 
   keyboard('7')
   
-  result=img_search_utils.searchImg('event_store1.png', beforeDelay=1, afterDelay=3, chkCnt=10)  
+  result=img_search_utils.searchImg('event_store1.png', beforeDelay=1, afterDelay=4, chkCnt=10)  
   if(result==0):
     return 0, "이벤트상점 클릭 실패"
     
-  result=img_search_utils.searchImg('dailyProduct.png', beforeDelay=1, afterDelay=1, chkCnt=30)  
+  result=img_search_utils.searchImg('auto_get.png', beforeDelay=1, afterDelay=1, chkCnt=30, _region=(1210,740,300,200))  
   if(result==0):
     return 0, "일일상품담기 실패"
+  
   
   # for i in range(2):
   #   randClick(475,380,10,10,0.5)
 
-  randClick(1475,830,5,5,0.5) #구매 결정
-  randClick(1050,650,5,5,0.5) 
+  randClick(1450,825,5,5,0.5) #구매 결정
+  randClick(1050,650,5,5,0.5) #확인
   escKey()
 
   # result=client_utils.searchImg('event_store2.png', beforeDelay=1, afterDelay=3, chkCnt=10)  
