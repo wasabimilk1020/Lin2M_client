@@ -681,12 +681,12 @@ def morning(sio, data,btn_name, character_name, handle):
   delay=data[4]
   name=character_name
 
-  # # 데일리 
-  # daily(sio, data,btn_name, character_name, handle)
-  # # 혈맹 
-  # result_1=guild(sio, data,btn_name, character_name, handle)
-  # if(result_1[0]==0):
-  #   return result_1[0], result_1[1]
+  # 데일리 
+  daily(sio, data,btn_name, character_name, handle)
+  # 혈맹 
+  result_1=guild(sio, data,btn_name, character_name, handle)
+  if(result_1[0]==0):
+    return result_1[0], result_1[1]
   #상점
   result_2=store(sio, data,btn_name, character_name, handle)
   if(result_2[0]==0):
